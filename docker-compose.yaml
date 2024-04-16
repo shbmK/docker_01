@@ -1,0 +1,41 @@
+services:
+  sqldb:
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+    networks:
+      - net1
+
+  app1:
+    depends_on:
+      - sqldb
+    image: node:18.14.2
+    restart: always
+    command: sh -c "npm start"
+    ports:
+      - 8800:8800
+    working_dir: /app1
+    volumes:
+      - ./backend:/app1/
+    networks:
+      - net1
+  app2:
+    depends_on:
+      - app1
+    image: node:18.14.2
+    command: sh -c "npm start"
+    restart: always
+    working_dir: /app
+    ports:
+      - 3000:3000
+    volumes: 
+      - ./client:/app/
+    networks:
+      - net1
+networks:
+  net1:
+    driver: bridge
+
+  
