@@ -1,6 +1,6 @@
 # docker compose up
 
-														OR							
+			OR							
 
 # docker run --name sql1 -e MYSQL_ROOT_PASSWORD=pass -p 3307:3306  mysql
 # docker network create net2
