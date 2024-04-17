@@ -1,7 +1,7 @@
 A basic book management system with CRUD capability
 
 To execute:
-# 1.docker compose up
+# 1.docker compose up //takes a few minutes
 # 2.goto localhost:300
 
 			**OR**							
